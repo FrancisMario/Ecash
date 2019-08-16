@@ -1,0 +1,52 @@
+
+            <div class="col">
+              <h2><b> Account Balance</b></h2>
+              <h3><span id="balance"><b>D 30,000.00</b></span></h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg">
+
+              <div class="media pb_feature-v2 text-left mb-1 mt-5">
+                <div class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
+                    class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
+                <div class="media-body">
+                  <h3 class="mt-2 mb-2 heading"><b>Profile</b></h3>
+                  <p class="text-sans-serif pb_font-16"><span id="name">Mario Francis Gomez</span></p>
+                </div>
+                <div class="media-body">
+                    <h3 class="mt-2 mb-2 heading"><b>Phone</b></h3>
+                    <p class="text-sans-serif pb_font-16"><span id="phone">+220 3247034</span></p>
+                  </div><br>
+                  <hr>
+                  
+              </div>
+              <div class="media pb_feature-v2 text-left mb-1 mt-5">
+                  <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
+                      class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
+              <div class="media-body heading">
+                  <h3 class="mt-2 mb-2 heading"><b>Acc. Type</b></h3>
+                  <p class="text-sans-serif pb_font-16"><span id="Acc_type">Business</span></p>
+                </div>
+          </div>
+        </div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ <div class="col">
+              <h3><b> Recent Transactions</b></h3>
+              <h4><b>D 30,000.00</b></h4>
+              
+              <div class="media pb_feature-v2 text-left mb-1 mt-5 row">
+                <div class="col-lg-4">Date</div> <div class="col-lg-4">Amount</div> <div class="col-lg-4">Type</div>
+                <hr>
+                 <div class="media-body col-lg-12  row" >
+                  <div class="col-lg-12 row padding">  <div class="col-lg-4">12/04/18</div> <div class="col-lg-4">D10,000</div> <div class="col-lg-4">Recieve</div></div>
+                  <div class="col-lg-12 row padding">  <div class="col-lg-4">12/04/18</div> <div class="col-lg-4">D10,000</div> <div class="col-lg-4">Recieve</div></div>
+                  <div class="col-lg-12 row padding">  <div class="col-lg-4">12/04/18</div> <div class="col-lg-4">D10,000</div> <div class="col-lg-4">Recieve</div></div>
+                  </div>
+                  <hr>
+                </div>
+               
+            </div>

@@ -1,0 +1,40 @@
+{
+  "name": "ecash",
+  "version": "0.0.1",
+  "description": "Electronic payment platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N/A.git"
+  },
+  "keywords": [
+    "ecash",
+    "MArio",
+    "gambia",
+    "2019",
+    "node",
+    "js",
+    "america"
+  ],
+  "author": "Mario Francis Gomez",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/N/A/issues"
+  },
+  "homepage": "https://github.com/N/A#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "mysql": "^2.17.1",
+    "password-strength-meter": "^1.2.2",
+    "qrcode": "^1.4.1",
+    "randomstring": "^1.1.5",
+    "twilio": "^3.33.1"
+  }
+}
