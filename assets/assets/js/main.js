@@ -1,5 +1,3 @@
-// Some global functions
-var home_details = null;
 
 
 $(document).ready(function($) {
@@ -248,39 +246,6 @@ function setCookie(cname,cvalue,exdays) {
 	return "";
   }
 
-//   Setting up the home Page
-function setUpHome(){
-	if(homeDetails == null){
-	
-		$.post("/getData",
-		{
-		  session_key: getCookie("s_id"),
-		  req_type:"home"
-		},
-		function(data, status){
-		  alert("Data: " + data + "\nStatus: " + status);
-		  if(data != "404"){
-			homeDetails = data;
-			// updating UI
-			$(".balance").text(data.balance)
-			$(".name").text(data.name)
-			$(".phone").text(data.phone)
-			$(".acc_type").text("Business")
 
-		  } else {
-			  alert("System Error");
-		  }
-		});
-	  
-	}
-}
-
-	function updateDetailsUI(data){
-
-		// getting ui elements for the details page
-
-
-
-	}
 
 

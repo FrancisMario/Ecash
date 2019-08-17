@@ -94,9 +94,9 @@
             <div class="form-group">
               <div class="pb_select-wrap">
                 <select name="user[account_type]" class="form-control pb_height-50 reverse">
-                  <option value="" selected>Account Type</option>
-                  <option value="Per">Personal</option>
-                  <option value="Bus">Business</option>
+                  <option value="" aria-required="false">Account Type</option>
+                  <option aria-valuenow="true" value="personal">Personal</option>
+                  <option aria-required="true" value="business">Business</option>
                 </select>
               </div>
             </div>
@@ -432,7 +432,6 @@
 
   </style>
   <script>
-  
     $('.pb_form_login').hide();
     var status = 0;
     $('.trottle').on('click', function () {
@@ -446,6 +445,38 @@
         status = 0;
       }
     });
+
+    // Some global functions
+    var home_details = [];
+
+    // Checking login state 
+    if (getCookie("s_id") != "") {
+      // alert(getCookie("s_id"));
+      $.post("/verifySession", {
+          data: getCookie("s_id")
+        }).done(function (data) {
+          console.log(data);
+          if (data === "404") {
+            console.log(data);
+            console.log("hallo");
+          } else {
+            // console.log("this is data "+data);
+            console.log("hello");
+            document.write(data);
+            
+          }
+          
+
+
+        })
+        .fail(function () {
+          // Todo, make a user friendly response to inform the user about the unsuccessfull session initiation.
+          alert("Login error");
+        });
+
+    } else {
+      console.log("connection made");
+    }
 
     // making verification request to server
     $("#submit-info").submit(function (e) {
@@ -471,13 +502,16 @@
         $this.serialize(), // Serializes form data in standard format
         function (data) {
           // saving the session as cookie to the system
-          setCookie("s_id",data);
+          setCookie("s_id", data);
+          home_details.session_id = data;
+
           // Sending go signal.
+          console.log("Sending signal")
           $.post("/login/OK", {
               data: data
             }).done(function (data) {
+              console.log("changing pages");
               document.write(data);
-              // console.log(data);
             })
             .fail(function () {
               // Todo, make a user friendly response to inform the user about the unsuccessfull session initiation.
@@ -490,8 +524,6 @@
         "text" // The format the response should be in
       );
     });
-
-  
   </script>
 
   <style>

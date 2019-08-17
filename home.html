@@ -79,10 +79,12 @@
           <div class="media pb_feature-v2 text-left mb-1 mt-5">
             <div class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
                 class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
+
             <div class="media-body">
               <h3 class="mt-2 mb-2 heading"><b>Profile</b></h3>
               <p class="text-sans-serif pb_font-16"><span id="name">{User Name}}</span></p>
             </div>
+
             <div class="media-body">
               <h3 class="mt-2 mb-2 heading"><b>Phone</b></h3>
               <p class="text-sans-serif pb_font-16"><span id="phone">{User Phone}</span></p>
@@ -94,135 +96,145 @@
             <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
                 class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
             <div class="media-body heading">
+
               <h3 class="mt-2 mb-2 heading"><b>Acc. Type</b></h3>
               <p class="text-sans-serif pb_font-16"><span id="acc_type">{Business}</span></p>
+
             </div>
           </div>
+
         </div>
 
         <div class="col-lg-1 pr-md-5 pr-sm-0 order-1  mb-5">
-          
-          </div>
-  
-          <div class="col-lg-3 pr-md-5 pr-sm-0 order-1  mb-5  outer_structure">
-            <div class="row">
-             
-                <div class="col">
-                    <h3><b> Recent Transactions</b></h3>
-                    <h4><b>D 30,000.00</b></h4>
-          
-                    <div class="media pb_feature-v2 text-left mb-1 mt-5 row">
-                      <div class="col-lg-4">Date</div>
-                      <div class="col-lg-4">Amount</div>
-                      <div class="col-lg-4">Type</div>
-                      <hr>
-                      <div class="media-body col-lg-12  row">
-                        <div class="col-lg-12 row padding">
-                          <div class="col-lg-4">12/04/18</div>
-                          <div class="col-lg-4">D10,000</div>
-                          <div class="col-lg-4">Recieve</div>
-                        </div>
-                        <div class="col-lg-12 row padding">
-                          <div class="col-lg-4">12/04/18</div>
-                          <div class="col-lg-4">D10,000</div>
-                          <div class="col-lg-4">Recieve</div>
-                        </div>
-                        <div class="col-lg-12 row padding">
-                          <div class="col-lg-4">12/04/18</div>
-                          <div class="col-lg-4">D10,000</div>
-                          <div class="col-lg-4">Recieve</div>
-                        </div>
-                      </div>
-                      <hr>
-                    </div>
-          
-                  </div>  
+
+        </div>
+
+        <div class="col-lg-3 pr-md-5 pr-sm-0 order-1  mb-5  outer_structure">
+          <div class="row">
+
+            <div class="col">
+              <h3><b> Recent Transactions</b></h3>
+              <h4><b>D 30,000.00</b></h4>
+
+              <div class="media pb_feature-v2 text-left mb-1 mt-5 row">
+                <div class="col-lg-4">Date</div>
+                <div class="col-lg-4">Amount</div>
+                <div class="col-lg-4">Type</div>
+                <hr>
+              </div>
+              <hr>
             </div>
+
           </div>
+        </div>
+      </div>
   </section>
   <!-- END section Home-->
 
   <!--  section Account-->
   <section id="section_account" class="pb_section bg-light pb_slant-white ">
-      <div class="container">
-        <div class="row">
-  
-  
-          <div class="col">
-            <h2><b> Account Balance</b></h2>
-            <h3><span id="balance"><b>D 30,000.00</b></span></h3>
-          </div>
+    <div class="container">
+      <div class="row">
+
+
+        <div class="col">
+          <h2><b> Make Transaction</b></h2>
+          <h3><span id="balance"><b>D 30,000.00</b></span></h3>
         </div>
-        <div class="row">
+      </div>
+      <div class="row">
+        <form id="transact" method="post" action="">
           <div class="col-lg">
-  
             <div class="media pb_feature-v2 text-left mb-1 mt-5">
               <div class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
                   class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
               <div class="media-body">
-                <h3 class="mt-2 mb-2 heading"><b>Profile</b></h3>
-                <p class="text-sans-serif pb_font-16"><span id="name">Mario Francis Gomez</span></p>
+                <h3 class="mt-2 mb-2 heading"><b>Reciever</b></h3>
+                <input name="details[destination]" type="text" placeholder="enter recipients Email or Phone">
               </div>
-              <div class="media-body">
-                <h3 class="mt-2 mb-2 heading"><b>Phone</b></h3>
-                <p class="text-sans-serif pb_font-16"><span id="phone">+220 3247034</span></p>
-              </div><br>
-              <hr>
-  
+
+              <div class="media pb_feature-v2 text-left mb-1 mt-5">
+                <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
+                    class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
+                <div class="media-body">
+                  <h3 class="mt-2 mb-2 heading"><b>Desctiption</b></h3>
+                  <input type="text"name="details[description]"
+                    placeholder="enter your secret confirmation key to complete transaction">
+                </div>
+              </div>
+
             </div>
             <div class="media pb_feature-v2 text-left mb-1 mt-5">
               <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
                   class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
-              <div class="media-body heading">
-                <h3 class="mt-2 mb-2 heading"><b>Acc. Type</b></h3>
-                <p class="text-sans-serif pb_font-16"><span id="Acc_type">Business</span></p>
+              <div class="media-body">
+                <h3 class="mt-2 mb-2 heading"><b>Amount</b></h3>
+                <input type="number" name="details[amount]" placeholder="Amount in GMD">
+              </div>
+
+            </div>
+            <div class="media pb_feature-v2 text-left mb-1 mt-5">
+              <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
+                  class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
+              <div class="media-body">
+                <h3 class="mt-2 mb-2 heading"><b>Comfirmation Code</b></h3>
+                <input type="password" maxlength="6"
+                 name="details[code]" placeholder="enter your secret confirmation key to complete transaction">
+              </div>
+            </div>
+            <div class="media pb_feature-v2 text-left mb-1 mt-5">
+              <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
+                  class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
+              <div class="media-body">
+                <!-- <h3 class="mt-2 mb-2 heading"><b>Comfirmation Code</b></h3> -->
+                <input type="submit" value="Send">
               </div>
             </div>
           </div>
-  
-          <div class="col-lg-1 pr-md-5 pr-sm-0 order-1  mb-5">
-            
-            </div>
-    
-            <div class="col-lg-3 pr-md-5 pr-sm-0 order-1  mb-5  outer_structure">
-              <div class="row">
-               
-                  <div class="col">
-                      <h3><b> Recent Transactions</b></h3>
-                      <h4><b>D 30,000.00</b></h4>
-            
-                      <div class="media pb_feature-v2 text-left mb-1 mt-5 row">
-                        <div class="col-lg-4">Date</div>
-                        <div class="col-lg-4">Amount</div>
-                        <div class="col-lg-4">Type</div>
-                        <hr>
-                        <div class="media-body col-lg-12  row">
-                          <div class="col-lg-12 row padding">
-                            <div class="col-lg-4">12/04/18</div>
-                            <div class="col-lg-4">D10,000</div>
-                            <div class="col-lg-4">Recieve</div>
-                          </div>
-                          <div class="col-lg-12 row padding">
-                            <div class="col-lg-4">12/04/18</div>
-                            <div class="col-lg-4">D10,000</div>
-                            <div class="col-lg-4">Recieve</div>
-                          </div>
-                          <div class="col-lg-12 row padding">
-                            <div class="col-lg-4">12/04/18</div>
-                            <div class="col-lg-4">D10,000</div>
-                            <div class="col-lg-4">Recieve</div>
-                          </div>
-                        </div>
-                        <hr>
-                      </div>
-            
-                    </div>  
-              </div>
-            </div>
-    </section>
-    <!-- END section account-->
+        </form>
+        <div class="col-lg-1 pr-md-5 pr-sm-0 order-1  mb-5">
 
-    <!--  section Settings-->
+        </div>
+
+        <div class="col-lg-3 pr-md-5 pr-sm-0 order-1  mb-5  outer_structure">
+          <div class="row">
+
+            <div class="col">
+              <h3><b> Recent Transactions</b></h3>
+              <h4><b>D 30,000.00</b></h4>
+
+              <div class="media pb_feature-v2 text-left mb-1 mt-5 row">
+                <div class="col-lg-4">Date</div>
+                <div class="col-lg-4">Amount</div>
+                <div class="col-lg-4">Type</div>
+                <hr>
+                <div class="media-body col-lg-12  row">
+                  <div class="col-lg-12 row padding">
+                    <div class="col-lg-4">12/04/18</div>
+                    <div class="col-lg-4">D10,000</div>
+                    <div class="col-lg-4">Recieve</div>
+                  </div>
+                  <div class="col-lg-12 row padding">
+                    <div class="col-lg-4">12/04/18</div>
+                    <div class="col-lg-4">D10,000</div>
+                    <div class="col-lg-4">Recieve</div>
+                  </div>
+                  <div class="col-lg-12 row padding">
+                    <div class="col-lg-4">12/04/18</div>
+                    <div class="col-lg-4">D10,000</div>
+                    <div class="col-lg-4">Recieve</div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+
+            </div>
+          </div>
+        </div>
+  </section>
+  <!-- END section account-->
+
+  <!--  section Settings-->
   <section id="section_account" class="pb_section bg-light pb_slant-white ">
     <div class="container">
       <div class="row">
@@ -261,44 +273,44 @@
         </div>
 
         <div class="col-lg-1 pr-md-5 pr-sm-0 order-1  mb-5">
-          
-          </div>
-  
-          <div class="col-lg-3 pr-md-5 pr-sm-0 order-1  mb-5  outer_structure">
-            <div class="row">
-             
-                <div class="col">
-                    <h3><b> Recent Transactions</b></h3>
-                    <h4><b>D 30,000.00</b></h4>
-          
-                    <div class="media pb_feature-v2 text-left mb-1 mt-5 row">
-                      <div class="col-lg-4">Date</div>
-                      <div class="col-lg-4">Amount</div>
-                      <div class="col-lg-4">Type</div>
-                      <hr>
-                      <div class="media-body col-lg-12  row">
-                        <div class="col-lg-12 row padding">
-                          <div class="col-lg-4">12/04/18</div>
-                          <div class="col-lg-4">D10,000</div>
-                          <div class="col-lg-4">Recieve</div>
-                        </div>
-                        <div class="col-lg-12 row padding">
-                          <div class="col-lg-4">12/04/18</div>
-                          <div class="col-lg-4">D10,000</div>
-                          <div class="col-lg-4">Recieve</div>
-                        </div>
-                        <div class="col-lg-12 row padding">
-                          <div class="col-lg-4">12/04/18</div>
-                          <div class="col-lg-4">D10,000</div>
-                          <div class="col-lg-4">Recieve</div>
-                        </div>
-                      </div>
-                      <hr>
-                    </div>
-          
-                  </div>  
+
+        </div>
+
+        <div class="col-lg-3 pr-md-5 pr-sm-0 order-1  mb-5  outer_structure">
+          <div class="row">
+
+            <div class="col">
+              <h3><b> Recent Transactions</b></h3>
+              <h4><b>D 30,000.00</b></h4>
+
+              <div class="media pb_feature-v2 text-left mb-1 mt-5 row">
+                <div class="col-lg-4">Date</div>
+                <div class="col-lg-4">Amount</div>
+                <div class="col-lg-4">Type</div>
+                <hr>
+                <div class="media-body col-lg-12  row">
+                  <div class="col-lg-12 row padding">
+                    <div class="col-lg-4">12/04/18</div>
+                    <div class="col-lg-4">D10,000</div>
+                    <div class="col-lg-4">Recieve</div>
+                  </div>
+                  <div class="col-lg-12 row padding">
+                    <div class="col-lg-4">12/04/18</div>
+                    <div class="col-lg-4">D10,000</div>
+                    <div class="col-lg-4">Recieve</div>
+                  </div>
+                  <div class="col-lg-12 row padding">
+                    <div class="col-lg-4">12/04/18</div>
+                    <div class="col-lg-4">D10,000</div>
+                    <div class="col-lg-4">Recieve</div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+
             </div>
           </div>
+        </div>
   </section>
   <!-- END section Settings-->
 
@@ -365,6 +377,95 @@
         status = 0;
       }
     });
+
+
+    //   Setting up the home Page
+    function setUpHome() {
+
+
+      $.post("/getData", {
+          session_key: getCookie("s_id"),
+          req_type: "home"
+        },
+        function (data, status) {
+          //   alert("Data: " + data + "\nStatus: " + status);
+          if (data != "404") {
+            homeDetails = data;
+            data = JSON.parse(data);
+            console.log("Sending")
+            console.log(data)
+
+            // updating UI
+            // $(".balance").text(data.balance)
+            $("#name").text(data.name + " " + data.lastname)
+            $("#phone").text(data.phone)
+            $("#acc_type").text("Business")
+
+          } else {
+            alert("System Error");
+          }
+        });
+
+    }
+ 
+    function checkAcc() {
+      if (document.cookie === "") {
+        return false;
+      }
+      console.log("ran ");
+      $.post("/getData", {
+          session_key: getCookie("s_id"),
+          req_type: "balance"
+        },
+        function (data, status) {
+          //   alert("Data: " + data + "\nStatus: " + status);
+          console.log("recieved response " + data)
+          if (data != "404") {
+            homeDetails = data;
+            data = JSON.parse("" + data + "");
+            console.log(data)
+
+            // updating UI
+            // $(".balance").text(data.balance)
+            $("#balance").text(data.currency_sign + " " + data.balance);
+
+          } else {
+            alert("System Error");
+          }
+        });
+    }
+
+    // making a transaction
+    $("#transact").submit(function (e) {
+      console.log("Making transaction..");
+      e.preventDefault(); // Prevents the page from refreshing
+      var $this = $(this); // `this` refers to the current form element
+      $.post(
+        $this.attr("action"), // Gets the URL to sent the post to
+        $this.serialize(), // Serializes form data in standard format
+        function (data) {
+          data[details][session_id] =  
+          // Sending go signal.
+          console.log("Sending signal")
+          $.post("/login/OK", {
+              data: data
+              // session_id = home_details.session_id
+            }).done(function (data) {
+              console.log("changing pages");
+              document.write(data);
+            })
+        },
+        "text" // The format the response should be in
+      );
+    });
+
+
+    setInterval(checkAcc(), 20000);
+    // user details
+    // $("body").on('load', function () {
+    // });
+    checkAcc();
+    setUpHome();
   </script>
 
   <style>

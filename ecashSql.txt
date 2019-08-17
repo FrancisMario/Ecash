@@ -1,1 +1,77 @@
 CREATE TABLE `users`.`users` ( `table_id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(50) NOT NULL , `lastname` VARCHAR(50) NOT NULL , `displayname` VARCHAR(20) NOT NULL , `phone` VARCHAR(15) NOT NULL , `email` VARCHAR(50) NOT NULL , `previous_hash` TEXT NOT NULL , `hash` TEXT NOT NULL , `user_id` VARCHAR(100) NOT NULL , PRIMARY KEY (`table_id`)) ENGINE = InnoDB;
+
+ $.post("/session_tracker/verify", {
+    data: id
+  }).done(function (data) {
+    if(data === "404"){
+      res.write("SESSION_NOT_FOUND");
+      res.end();
+    }
+  console.log(data);
+  var user_id = data.user_id;
+
+    if (user_id === null) {
+      res.write("404");
+    } else 
+    {
+
+      switch (type) {
+
+        case "home":
+          var sql = "SELECT * FROM users WHERE user_id = '" + rows[0].user_id +"';";
+          pool.query(sql, function (err, rows) {
+            console.log("hompage is on");
+            console.log(sql);
+            console.log(rows[0]);
+            //  console.log(err);
+            //  console.log(verifySession(id));
+            var response  = '{"table_id": "'+rows[0].table_id+'","name":"'+rows[0].name+'","lastname": "'+rows[0].lastname+'","displayname": "'+rows[0].displayname+'","phone": "'+rows[0].phone+'","email": "'+rows[0].email+'"}';
+             res.write(response);
+             console.log(rows);
+             console.log(JSON.parse(response));
+             
+             res.end();
+          });
+          break;
+
+        case "balance":
+          var sql = "SELECT * FROM " + user_id + " WHERE 1;";
+          pool.query(sql, function (err, rows) {
+            console.log(sql);
+            if(rows === undefined){
+              res.write('404');    
+            } else {
+            var response  = '{"table_id": "'+rows[0].table_id+'","name":"'+rows[0].name+'","lastname": "'+rows[0].lastname+'","displayname": "'+rows[0].displayname+'","phone": "'+rows[0].phone+'","email": "'+rows[0].email+'"}';
+            res.write(rows[0].current_balance);
+            res.end();
+            }
+          })
+          break;
+
+          case "account":
+          var sql = "SELECT * FROM users WHERE user_id = " + user_id;
+          pool.query(sql, function (err, rows) {
+            res.write(rows);
+            res.end();
+          })
+          break;
+
+        case "settings":
+          var sql = "SELECT * FROM users WHERE user_id = " + user_id;
+          pool.query(sql, function (err, rows) {
+            res.write(rows);
+            res.end();
+          })
+          break;
+
+
+        default:
+          break;
+      }
+    }
+  }).fail(function () {
+    // Todo, make a user friendly response to inform the user about the unsuccessfull session initiation.
+    // 
+    // 
+    alert("Login error");
+  });
