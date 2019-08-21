@@ -1,4 +1,4 @@
-//  Decleration of Dependence 
+ //  Decleration of Dependence 
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -76,8 +76,10 @@ router.post('/login', function (req, res) {
     // res.end();
     // console.log(typeof(result[0].user_id));
     console.log(true);
-    if (result.length == 0) {
+    if (true) { // TODO Modify this to properly check for Credencial
       console.log(false);
+	  // redirecting to a new file
+		res.sendFile(path.join(__dirname + '/signup.html'));
     } else {
       // generating session token
       var session_id = token.generateSessionToken();

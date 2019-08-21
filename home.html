@@ -143,55 +143,35 @@
         </div>
       </div>
       <div class="row">
-        <form id="transact" method="post" action="">
-          <div class="col-lg">
-            <div class="media pb_feature-v2 text-left mb-1 mt-5">
-              <div class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
-                  class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
-              <div class="media-body">
-                <h3 class="mt-2 mb-2 heading"><b>Reciever</b></h3>
-                <input name="details[destination]" type="text" placeholder="enter recipients Email or Phone">
-              </div>
-
-              <div class="media pb_feature-v2 text-left mb-1 mt-5">
-                <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
-                    class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
-                <div class="media-body">
-                  <h3 class="mt-2 mb-2 heading"><b>Desctiption</b></h3>
-                  <input type="text"name="details[description]"
-                    placeholder="enter your secret confirmation key to complete transaction">
-                </div>
-              </div>
-
+          <form id="transaction" action="" method="POST" class="bg-white rounded pb_form_v1 pb_form_signup">
+            <h2 class="mb-4 mt-0 text-center">Fill the form to make a transaction</h2>
+            <div class="form-group">
+              <input type="number" class="form-control pb_height-50 reverse" name="details[amount]" placeholder="Amount To Send*">
             </div>
-            <div class="media pb_feature-v2 text-left mb-1 mt-5">
-              <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
-                  class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
-              <div class="media-body">
-                <h3 class="mt-2 mb-2 heading"><b>Amount</b></h3>
-                <input type="number" name="details[amount]" placeholder="Amount in GMD">
-              </div>
-
+            <div class="form-group">
+              <input type="text" class="form-control pb_height-50 reverse" name="details[reciever]"
+                placeholder="Reciever ID *">
             </div>
-            <div class="media pb_feature-v2 text-left mb-1 mt-5">
-              <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
-                  class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
-              <div class="media-body">
-                <h3 class="mt-2 mb-2 heading"><b>Comfirmation Code</b></h3>
-                <input type="password" maxlength="6"
-                 name="details[code]" placeholder="enter your secret confirmation key to complete transaction">
-              </div>
+            <div class="form-group">
+              <input type="text" class="form-control pb_height-50 reverse" name="details[details]" placeholder="Transaction details">
             </div>
-            <div class="media pb_feature-v2 text-left mb-1 mt-5">
-              <div style="visibility: hidden;" class="pb_icon d-flex mr-3 align-self-start pb_w-15"><i
-                  class="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
-              <div class="media-body">
-                <!-- <h3 class="mt-2 mb-2 heading"><b>Comfirmation Code</b></h3> -->
-                <input type="submit" value="Send">
-              </div>
+            <div class="form-group">
+              <input type="password" class="form-control pb_height-50 reverse" maxlength="6"   name="details[confimation]" placeholder="Confirmation Code*">
             </div>
-          </div>
-        </form>
+            <div class="form-group">
+            <!---  <div class="pb_select-wrap">
+                <select name="user[account_type]" class="form-control pb_height-50 reverse">
+                  <option value="" aria-required="false">Account Type</option>
+                  <option aria-valuenow="true" value="personal">Personal</option>
+                  <option aria-required="true" value="business">Business</option>
+                </select>
+              </div> -->
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"
+                value="Send">
+            </div>
+          </form>
         <div class="col-lg-1 pr-md-5 pr-sm-0 order-1  mb-5">
 
         </div>
@@ -330,10 +310,10 @@
       </div>
       <div class="row">
         <div class="col text-center">
-          <p class="pb_font-14">&copy; 2019. All Rights Reserved. <br> <a
+          <p class="pb_font-14">&copy; Ecash 2019. All Rights Reserved. <br> <!-- <a
               href="https://uicookies.com/bootstrap-html-templates/">Bootstrap Templates</a> by uiCookies</p>
           <p class="pb_font-14">Demo Images: <a href="https://uns
-            plash.com/" target="_blank" rel="nofollow">Unsplash</a>
+            plash.com/" target="_blank" rel="nofollow">Unsplash</a> -->
           </p>
         </div>
       </div>
@@ -444,16 +424,7 @@
         $this.attr("action"), // Gets the URL to sent the post to
         $this.serialize(), // Serializes form data in standard format
         function (data) {
-          data[details][session_id] =  
-          // Sending go signal.
-          console.log("Sending signal")
-          $.post("/login/OK", {
-              data: data
-              // session_id = home_details.session_id
-            }).done(function (data) {
-              console.log("changing pages");
-              document.write(data);
-            })
+           
         },
         "text" // The format the response should be in
       );
