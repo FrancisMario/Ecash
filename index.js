@@ -75,11 +75,11 @@ router.post('/login', function (req, res) {
     // res.write("Welcome" + result.name);
     // res.end();
     // console.log(typeof(result[0].user_id));
-    console.log(true);
-    if (true) { // TODO Modify this to properly check for Credencial
+	// 
+    if (result === undefined) { // TODO Modify this to properly check for Credencial
+    console.log(result);
       console.log(false);
-	  // redirecting to a new file
-		res.sendFile(path.join(__dirname + '/signup.html'));
+	  
     } else {
       // generating session token
       var session_id = token.generateSessionToken();
