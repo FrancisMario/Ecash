@@ -143,7 +143,7 @@
         </div>
       </div>
       <div class="row">
-          <form id="transaction" action="" method="POST" class="bg-white rounded pb_form_v1 pb_form_signup">
+          <form id="transaction" action="transaction" method="POST" class="bg-white rounded pb_form_v1 pb_form_signup">
             <h2 class="mb-4 mt-0 text-center">Fill the form to make a transaction</h2>
             <div class="form-group">
               <input type="number" class="form-control pb_height-50 reverse" name="details[amount]" placeholder="Amount To Send*">
@@ -372,8 +372,8 @@
           if (data != "404") {
             homeDetails = data;
             data = JSON.parse(data);
-            console.log("Sending")
-            console.log(data)
+            console.log("Sending");
+            console.log(data);
 
             // updating UI
             // $(".balance").text(data.balance)
@@ -416,13 +416,14 @@
     }
 
     // making a transaction
-    $("#transact").submit(function (e) {
+    $("#transaction").submit(function (e) {
       console.log("Making transaction..");
       e.preventDefault(); // Prevents the page from refreshing
       var $this = $(this); // `this` refers to the current form element
       $.post(
         $this.attr("action"), // Gets the URL to sent the post to
         $this.serialize(), // Serializes form data in standard format
+		console.log($this.details),
         function (data) {
            
         },

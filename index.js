@@ -71,14 +71,14 @@ router.post('/login', function (req, res) {
   var sql = "SELECT * FROM users WHERE email = '" + id + "' OR phone = '" + id + "' AND password = '" + password + "';";
   // Authenticating the user
   pool.query(sql, function (err, result, fields) {
-    if (err) console.log("database is not live");
+    if (err) console.log(err);
     // res.write("Welcome" + result.name);
     // res.end();
     // console.log(typeof(result[0].user_id));
 	// 
     if (result === undefined) { // TODO Modify this to properly check for Credencial
     console.log(result);
-      console.log(false);
+      console.log(result);
 	  
     } else {
       // generating session token
@@ -255,20 +255,21 @@ router.post('/transaction', function (req, res) {
         transactionDeatails.user_id = rows[0].user_id;
 
         // SELECT TOP 1 * FROM active_session ORDER BY ID DESC 
-        // verifying if transaction is possible due to enough founds in account
-        if (transactionDeatails.accType === "business") {
+
+        // verifying if transaction is possible based on enough founds in account
+        if (transactionDetails.accType === "business") {
           sql = "SELECT balance FROM `business_clients_balance` WHERE user_id = '" + user_id + "';";
         } else {
           sql = "SELECT balance FROM `personal_clients_balance` WHERE user_id = '" + user_id + "';";
         }
         pool.query(sql, function (err, result, fields) {
+
           // checking compairing the balance and the transaction amount
           if (result[0].current_balance === undefined || result[0].current_balance < transactionDeatails.amount) {
             res.write("INSUFFICIENT_FOUNDS");
             res.end();
             return false;
-          }
-
+          } else {
 
           // Making transaction, ie. adding to master ledger.
           var sql = "INSERT INTO `master_ledger` (`transaction_id`, `transaction_amount`, `transaction_sender`, `transaction_recipient`, `transaction_date`, `transaction_time`, `previous_hash`, `hash`)  VALUES (NULL, " + transactionDeatails.amount + "," + user_id + ", " + transactionDeatails.destination + ", CURRENT_DATE(), CURRENT_TIME(), " + getPreviousHash('master') + ", " + makeTransactionhash(userDetails) + ");";
@@ -277,7 +278,8 @@ router.post('/transaction', function (req, res) {
             // recording transaction to recipient personal ledger
             var sql = "SELECT * FROM users WHERE email = '" + id + "' OR phone = '" + id + "' AND password = '" + password + "';";
             pool.query(sql, function (err, result, fields) {
-              // recording transaction to recipient personal ledger
+
+              // recording transaction to sender personal ledger
               var sql = "SELECT * FROM users WHERE email = '" + id + "' OR phone = '" + id + "' AND password = '" + password + "';";
               pool.query(sql, function (err, result, fields) {
 
@@ -287,6 +289,7 @@ router.post('/transaction', function (req, res) {
               });
             });
           });
+		  }
 
         });
 
