@@ -227,46 +227,70 @@ router.post('/verifySession', function (req, res) {
 // Transaction processor 
 router.post('/transaction', function (req, res) {
 
-      var transactionDeatails = {};
+      var transactionDetails = {};
 
-      transactionDeatails.destination = req.body.details.destination;
-      transactionDeatails.description = req.body.details.description;
-      transactionDeatails.curency = req.body.details.currency;
-      transactionDeatails.amount = req.body.details.amount;
-      transactionDeatails.accType = req.body.details.accType;
-      transactionDeatails.session_id = req.body.details.session_id;
-      transactionDeatails.date = new Date();
+      transactionDetails.destination = req.body.details.destination;
+      transactionDetails.description = req.body.details.description;
+      transactionDetails.curency = req.body.details.currency;
+      transactionDetails.amount = req.body.details.amount;
+      transactionDetails.accType = req.body.details.accType;
+      transactionDetails.session_id = req.body.details.session_id;
+      transactionDetails.date = new Date();
       // making sure the amount is not a negetive number
-      if (transactionDeatails.amount < 1) {
+      if (transactionDetails.amount < 1) {
         res.write("INVALID_TRANSACTION_AMOUNT");
         res.end();
         return false;
       }
 
       // verifying the session
-      var sql = "SELECT user_id FROM active_sessions WHERE session_id = '" + session_id + "';";
+      var sql = "SELECT user_id FROM active_sessions WHERE session_id = '" + req.body.details.session_id + "';";
+	  console.log(req.body.details);
       pool.query(sql, function (err, rows) {
 
-        if (rows[0].user_id === undefined) {
+        if (rows === undefined) {
           res.write("USER_NOT_SIGNED_IN");
+          res.write(sql);
           res.end();
-          process.end();
-        }
-        transactionDeatails.user_id = rows[0].user_id;
+          //process.end();
+        } 
+	    else 
+	   {
+          transactionDetails.user_id = rows[0].user_id;
 
-        // SELECT TOP 1 * FROM active_session ORDER BY ID DESC 
+         // SELECT TOP 1 * FROM active_session ORDER BY ID DESC 
 
-        // verifying if transaction is possible based on enough founds in account
-        if (transactionDetails.accType === "business") {
-          sql = "SELECT balance FROM `business_clients_balance` WHERE user_id = '" + user_id + "';";
+     // Getting sender user details 
+     sql = "SELECT * FROM `users` WHERE 'user_id' = '" + rows[0].user_id + "';";
+		  pool.query(sql, function (err, result, fields) {
+        console.log(rows[0].user_id);
+        console.log(result);
+        console.log(sql);
+        const sender_details = result;
+         // verifying if transaction is possible based on enough founds in account
+
+         if(result !== undefined) {
+        if (sender_details.account_type === "1") {
+          sql = "SELECT balance FROM `business_clients_balance` WHERE user_id = '" + transactionDetails.user_id  + "';";
         } else {
-          sql = "SELECT balance FROM `personal_clients_balance` WHERE user_id = '" + user_id + "';";
+          sql = "SELECT balance FROM `personal_clients_balance` WHERE user_id = '" + transactionDetails.user_id  + "';";
+        } 
+      }else{
+          res.write("UNEXPECTED_ERROR");
+          // res.end();
+          
         }
+		
+
         pool.query(sql, function (err, result, fields) {
 
           // checking compairing the balance and the transaction amount
-          if (result[0].current_balance === undefined || result[0].current_balance < transactionDeatails.amount) {
-            res.write("INSUFFICIENT_FOUNDS");
+          if (result[0].balance === undefined || (result[0].balance + 1) <= (transactionDetails.amount + 1)) {
+            console.log(result[0].balance );
+            console.log(transactionDetails.amount);
+            console.log(result[0].balance - transactionDetails.amount);
+            console.log(result[0].balance - 1);
+            res.write("INSUFFICIENT_FUNDS");
             res.end();
             return false;
           } else {
@@ -289,19 +313,19 @@ router.post('/transaction', function (req, res) {
               });
             });
           });
-		  }
+		  } 
 
         });
 
-
-      });
-
-    });
-
+		});
+  }
+  });
+});
       //add the router
       app.use(express.urlencoded());
       app.use(express.static('assets'));
       app.use('/', router);
       // app.use(compression());
       app.listen(process.env.port || 8080);
+    
       console.log('Running at Port 8080');

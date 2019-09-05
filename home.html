@@ -153,11 +153,14 @@
                 placeholder="Reciever ID *">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control pb_height-50 reverse" name="details[details]" placeholder="Transaction details">
+              <input type="text" id="pass" class="form-control pb_height-50 reverse" name="details[details]" placeholder="Transaction details">
             </div>
             <div class="form-group">
               <input type="password" class="form-control pb_height-50 reverse" maxlength="6"   name="details[confimation]" placeholder="Confirmation Code*">
             </div>
+			<input type="text" id="s_id" style="display:none" class="form-control pb_height-50 reverse" name="details[session_id]"
+               >
+
             <div class="form-group">
             <!---  <div class="pb_select-wrap">
                 <select name="user[account_type]" class="form-control pb_height-50 reverse">
@@ -418,14 +421,15 @@
     // making a transaction
     $("#transaction").submit(function (e) {
       console.log("Making transaction..");
+	  $("#s_id").val(getCookie("s_id"))
       e.preventDefault(); // Prevents the page from refreshing
       var $this = $(this); // `this` refers to the current form element
       $.post(
         $this.attr("action"), // Gets the URL to sent the post to
         $this.serialize(), // Serializes form data in standard format
-		console.log($this.details),
         function (data) {
-           
+           console.log(data);
+		   console.log($this);
         },
         "text" // The format the response should be in
       );
